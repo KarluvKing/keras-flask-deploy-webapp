@@ -28,20 +28,20 @@ pipeline {
         }
         stage('Run docker container') {
             steps {
-                sh 'docker build -t keras_flask_app /var/lib/jenkins/workspace/keras-flask-deploy-webapp_master/keras-flask-deploy-webapp/.'
-                sh 'docker run -d -p 5000:5000 keras_flask_app'
+                sh 'docker build -t capstone /var/lib/jenkins/workspace/keras-flask-deploy-webapp_master/keras-flask-deploy-webapp/.'
+                sh 'docker run -d -p 5000:5000 capstone'
             }
         }
-        stage('Test if container is running') {
+        stage('Test if container is running on port 5000') {
             steps {
                 sh 'curl -Is http://localhost:5000 | head -1'
             }
         }
-        stage('Stop container - delete image') {
+        stage('Stop container') {
             steps {
                 sh 'docker stop $(docker ps -a -q)'
                 sh 'sleep 30'
-                sh '''docker images -a | grep "keras_flask_app" | awk '{print $3}' | xargs docker rmi --force'''
+                
                 sh 'sleep 5'
             }
         }
@@ -50,6 +50,14 @@ pipeline {
                 sh '/usr/bin/aws s3 ls'
             }
         }
+        stage('Push docker image to ERS AWS Repository') {
+            steps {
+                sh '$(aws ecr get-login --no-include-email --region us-west-2)'
+                sh 'docker tag capstone:latest 431145295974.dkr.ecr.us-west-2.amazonaws.com/capstone:latest'
+                sh 'docker push 431145295974.dkr.ecr.us-west-2.amazonaws.com/capstone:latest'
+            }
+        }
+        
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
@@ -57,4 +65,5 @@ pipeline {
         }
     }
 }
+
 
