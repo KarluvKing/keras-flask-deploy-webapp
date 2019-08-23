@@ -40,7 +40,7 @@ pipeline {
         stage('Stop container - delete image') {
             steps {
                 sh 'docker stop $(docker ps -a -q)'
-                sh 'docker images -a | grep "keras_flask_app" | awk '{print $3}' | xargs docker rmi'
+                sh '''docker images -a | grep "keras_flask_app" | awk '{print $3}' | xargs docker rmi'''
             }
         }
         stage('Test aws connection') {
