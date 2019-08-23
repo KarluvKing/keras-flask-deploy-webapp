@@ -10,7 +10,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'pwd'
+                sh 'git clone https://github.com/KarluvKing/keras-flask-deploy-webapp.git'
             }
         }
         stage('Deploy') {
