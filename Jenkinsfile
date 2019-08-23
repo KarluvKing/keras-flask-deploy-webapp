@@ -29,10 +29,10 @@ pipeline {
         stage('Run docker container') {
             steps {
                 sh 'docker build -t capstone /var/lib/jenkins/workspace/keras-flask-deploy-webapp_master/keras-flask-deploy-webapp/.'
-                sh 'docker run -d -p 8080:8080 capstone'
+                sh 'docker run -d -p 5555:5555 capstone'
             }
         }
-        stage('Test if container is running on port 8080') {
+        stage('Test if container is running on port 5555') {
             steps {
                 sh 'curl -Is http://localhost:8080 | head -1'
             }
@@ -40,9 +40,7 @@ pipeline {
         stage('Stop container') {
             steps {
                 sh 'docker stop $(docker ps -a -q)'
-                sh 'sleep 30'
-                
-                sh 'sleep 5'
+                sh 'sleep 10'
             }
         }
         stage('Push docker image to DockerHUB') {
