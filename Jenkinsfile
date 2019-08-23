@@ -46,7 +46,7 @@ pipeline {
         stage('Push docker image to DockerHUB') {
             steps {
                 sh 'echo "rui12345" | docker login --username=ruipbranco --password-stdin'
-                sh 'docker push ruipbranco/capstonenddevops:tagname'
+                sh 'docker push ruipbranco/capstonenddevops'
             }
         }
         
