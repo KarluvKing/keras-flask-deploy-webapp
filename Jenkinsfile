@@ -15,6 +15,11 @@ pipeline {
                 sh 'ls -l'
             }
         }
+        stage('Validate docker image') {
+            steps {
+                sh 'docker run --rm -i hadolint/hadolint < Dockerfile'
+            }
+        }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
