@@ -6,6 +6,6 @@ WORKDIR /usr/src/app
 RUN pip install Werkzeug Flask numpy Keras gevent pillow h5py tensorflow
 
 
-EXPOSE 8080
+EXPOSE 5555
 CMD [ "python" , "app.py"]
 
