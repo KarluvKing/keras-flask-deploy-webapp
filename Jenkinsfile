@@ -45,16 +45,10 @@ pipeline {
                 sh 'sleep 5'
             }
         }
-        stage('Test aws connection') {
+        stage('Push docker image to DockerHUB') {
             steps {
-                sh '/usr/bin/aws s3 ls'
-            }
-        }
-        stage('Push docker image to ERS AWS Repository') {
-            steps {
-                sh '$(aws ecr get-login --no-include-email --region us-west-2)'
-                sh 'docker tag capstone:latest 431145295974.dkr.ecr.us-west-2.amazonaws.com/capstone:latest'
-                sh 'docker push 431145295974.dkr.ecr.us-west-2.amazonaws.com/capstone:latest'
+                sh 'echo "rui12345" | docker login --username=ruipbranco --password-stdin'
+                sh 'docker push ruipbranco/capstonenddevops:tagname'
             }
         }
         
