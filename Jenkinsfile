@@ -2,9 +2,11 @@ pipeline {
     agent any
 
     stages {
-        stage('Check docker file...') {
+        stage('Git clone repo') {
             steps {
-                echo 'Check docker file...'
+                echo 'clone repo'
+                git clone https://github.com/KarluvKing/keras-flask-deploy-webapp.git
+                echo 'finish...'
             }
         }
         stage('Test') {
