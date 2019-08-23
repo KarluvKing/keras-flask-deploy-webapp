@@ -2,16 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Clean directory') {
             steps {
-                echo 'Building..'
+                sh 'touch oneemptyfile'
+                sh 'rm -r *.*'
+                echo 'done'
             }
         }
-        stage('Test') {
+        stage('Clone repository') {
             steps {
-                echo 'Testing..'
                 sh 'git clone https://github.com/KarluvKing/keras-flask-deploy-webapp.git'
-                sh 'rm -r keras-flask-deploy-webapp'
                 sh 'ls -l'
             }
         }
