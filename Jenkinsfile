@@ -16,6 +16,11 @@ pipeline {
                 sh 'ls -l'
             }
         }
+        stage('Validate python code') {
+            steps {
+                sh 'pylint --disable=R,C,W1203 app.py'
+            }
+        }
         stage('Validate docker image') {
             steps {
                 sh 'docker run --rm -i hadolint/hadolint hadolint --ignore DL3013 - < /var/lib/jenkins/workspace/keras-flask-deploy-webapp_master/keras-flask-deploy-webapp/Dockerfile'
@@ -28,4 +33,6 @@ pipeline {
         }
     }
 }
+
+pylint --disable=R,C,W1203 app.py
 
