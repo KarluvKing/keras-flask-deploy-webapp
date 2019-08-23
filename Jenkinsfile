@@ -2,14 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Git clone repo') {
+        stage('Build') {
             steps {
-                echo 'clone repo'
+                echo 'Building..'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
+                sudo docker ps -a
             }
         }
         stage('Deploy') {
@@ -19,5 +20,4 @@ pipeline {
         }
     }
 }
-
 
