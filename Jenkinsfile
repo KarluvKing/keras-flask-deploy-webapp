@@ -4,8 +4,9 @@ pipeline {
     stages {
         stage('Clean directory') {
             steps {
+                sh 'ls -l'
                 sh 'touch oneemptyfile'
-                sh 'rm -r *.*'
+                sh 'rm -r *'
                 echo 'done'
             }
         }
