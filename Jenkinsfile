@@ -5,8 +5,6 @@ pipeline {
         stage('Git clone repo') {
             steps {
                 echo 'clone repo'
-                sudo git clone 'https://github.com/KarluvKing/keras-flask-deploy-webapp.git'
-                echo 'finish...'
             }
         }
         stage('Test') {
