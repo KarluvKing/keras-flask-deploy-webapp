@@ -34,14 +34,13 @@ pipeline {
         }
         stage('Test if container is running') {
             steps {
-                sh 'curl -Is http://localhost:5000'
-                sh 'sleep 5'
+                sh 'curl -Is http://localhost:5000 | head -1'
             }
         }
         stage('Stop container - delete image') {
             steps {
                 sh 'docker stop $(docker ps -a -q)'
-                sh 'sleep 15'
+                sh 'sleep 30'
                 sh '''docker images -a | grep "keras_flask_app" | awk '{print $3}' | xargs docker rmi --force'''
                 sh 'sleep 5'
             }
