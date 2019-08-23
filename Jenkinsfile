@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Validate python code') {
             steps {
-                sh 'pylint --disable=R,C,W1203 app.py'
+                sh 'pylint --disable=R,C,W1203 /var/lib/jenkins/workspace/keras-flask-deploy-webapp_master/keras-flask-deploy-webapp/app.py'
             }
         }
         stage('Validate docker image') {
