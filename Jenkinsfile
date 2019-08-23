@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Test aws connection') {
             steps {
-                sh 'aws s3 ls'
+                sh '/usr/bin/aws s3 ls'
             }
         }
         stage('Deploy') {
