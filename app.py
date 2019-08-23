@@ -31,7 +31,7 @@ MODEL_PATH = 'models/your_model.h5'
 # Check https://keras.io/applications/
 from keras.applications.resnet50 import ResNet50
 model = ResNet50(weights='imagenet')
-print('Model loaded. Check http://127.0.0.1:8080/')
+print('Model loaded. Check http://127.0.0.1:5555/')
 
 
 def model_predict(img_path, model):
@@ -83,5 +83,5 @@ if __name__ == '__main__':
     # app.run(port=5002, debug=True)
 
     # Serve the app with gevent
-    http_server = WSGIServer(('0.0.0.0', 8080), app)
+    http_server = WSGIServer(('0.0.0.0', 5555), app)
     http_server.serve_forever()
