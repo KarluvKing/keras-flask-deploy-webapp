@@ -29,12 +29,12 @@ pipeline {
         stage('Run docker container') {
             steps {
                 sh 'docker build -t capstone /var/lib/jenkins/workspace/keras-flask-deploy-webapp_master/keras-flask-deploy-webapp/.'
-                sh 'docker run -d -p 5000:5000 capstone'
+                sh 'docker run -d -p 8080:8080 capstone'
             }
         }
-        stage('Test if container is running on port 5000') {
+        stage('Test if container is running on port 8080') {
             steps {
-                sh 'curl -Is http://localhost:5000 | head -1'
+                sh 'curl -Is http://localhost:8080 | head -1'
             }
         }
         stage('Stop container') {
