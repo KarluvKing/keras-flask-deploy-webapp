@@ -18,6 +18,8 @@ pipeline {
         }
         stage('Validate docker image') {
             steps {
+                sh 'cd keras-flask-deploy-webapp'
+                sh 'ls -l'
                 sh 'docker run --rm -i hadolint/hadolint < Dockerfile'
             }
         }
