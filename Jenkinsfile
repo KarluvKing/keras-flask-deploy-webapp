@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Run docker container') {
             steps {
-                sh 'docker build -t /var/lib/jenkins/workspace/keras-flask-deploy-webapp_master/keras-flask-deploy-webapp/keras_flask_app .'
+                sh 'docker build -t keras_flask_app /var/lib/jenkins/workspace/keras-flask-deploy-webapp_master/keras-flask-deploy-webapp/keras_flask_app/'
                 sh 'docker run -d -p 5000:5000 keras_flask_app'
             }
         }
