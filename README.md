@@ -12,7 +12,7 @@
 - Clone this repo 
 - Install requirements
 - Run the script
-- Check http://localhost:8080
+- Check http://localhost:5555
 - Done! :tada:
 
 :point_down:Screenshot:
@@ -29,7 +29,7 @@
 ```shell
 $ cd keras-flask-deploy-webapp
 $ docker build -t keras_flask_app .
-$ docker run -d -p 8080:8080 keras_flask_app 
+$ docker run -d -p 5555:5555 keras_flask_app 
 ```
 
 ### Build and run an image from your model into the containeri.
@@ -42,9 +42,9 @@ $ docker run -e MODEL_PATH=/mnt/models/your_model.h5  -v volume-name:/mnt/models
 For your convenience, can just pull the image instead of building it. 
 ```shell
 $ docker pull physhik/keras-flask-app:2 
-$ docker run -d -p 5000:5000 physhik/keras-flask-app:2
+$ docker run -d -p 5555:5555 physhik/keras-flask-app:2
 ```
-Open http://localhost:5000 after waiting for a minute to install in the container.
+Open http://localhost:5555 after waiting for a minute to install in the container.
 
 
 ## Local Installation
@@ -78,7 +78,7 @@ $ python app.py
 
 ### Play
 
-Open http://localhost:5000 and have fun. :smiley:
+Open http://localhost:5555 and have fun. :smiley:
 
 <p align="center">
   <img src="https://s18.postimg.cc/5ekln1vvt/demo2.gif" width="600px" alt="">
