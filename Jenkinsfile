@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Check docker file...') {
             steps {
-                echo 'Building..'
+                docker run --rm -i hadolint/hadolint < Dockerfile
             }
         }
         stage('Test') {
@@ -19,3 +19,5 @@ pipeline {
         }
     }
 }
+
+
