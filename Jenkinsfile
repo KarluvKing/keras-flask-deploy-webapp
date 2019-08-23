@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Validate docker image') {
             steps {
-                sh 'docker run --rm -i hadolint/hadolint --ignore DL3013 < /var/lib/jenkins/workspace/keras-flask-deploy-webapp_master/keras-flask-deploy-webapp/Dockerfile'
+                sh 'docker run --rm -i hadolint/hadolint hadolint --ignore DL3013 < /var/lib/jenkins/workspace/keras-flask-deploy-webapp_master/keras-flask-deploy-webapp/Dockerfile'
             }
         }
         stage('Deploy') {
