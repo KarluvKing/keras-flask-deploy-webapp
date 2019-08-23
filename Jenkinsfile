@@ -59,7 +59,7 @@ pipeline {
                 sh 'sleep 10'
                 sh 'kubectl port-forward $POD_NAME 5555:5555'
             }
-        {
+        }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
@@ -67,5 +67,3 @@ pipeline {
         }
     }
 }
-    }
-
