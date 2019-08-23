@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Check docker file...') {
             steps {
-                docker run --rm -i hadolint/hadolint < Dockerfile
+                sudo docker run --rm -i hadolint/hadolint < Dockerfile
             }
         }
         stage('Test') {
