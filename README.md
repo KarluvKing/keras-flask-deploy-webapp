@@ -12,7 +12,7 @@
 - Clone this repo 
 - Install requirements
 - Run the script
-- Check http://localhost:5000
+- Check http://localhost:8080
 - Done! :tada:
 
 :point_down:Screenshot:
@@ -29,7 +29,7 @@
 ```shell
 $ cd keras-flask-deploy-webapp
 $ docker build -t keras_flask_app .
-$ docker run -d -p 5000:5000 keras_flask_app 
+$ docker run -d -p 8080:8080 keras_flask_app 
 ```
 
 ### Build and run an image from your model into the containeri.
