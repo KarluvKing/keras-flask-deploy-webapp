@@ -34,5 +34,3 @@ pipeline {
     }
 }
 
-pylint --disable=R,C,W1203 app.py
-
