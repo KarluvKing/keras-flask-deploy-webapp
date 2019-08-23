@@ -52,12 +52,8 @@ pipeline {
         }
         stage('Deploy to AWS K8S') {
             steps {
-                sh 'dockerpath=ruipbranco/app'
-                sh 'kubectl run kubernetes-nddevopskubernetes --image=$dockerpath --port=5555'
-                sh 'kubectl get pods'
-                sh '''export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')'''
-                sh 'sleep 10'
-                sh 'kubectl port-forward $POD_NAME 5555:5555'
+                sh 'sudo su - jenkins'
+                sh 'whoami'
             }
         }
         stage('Deploy') {
