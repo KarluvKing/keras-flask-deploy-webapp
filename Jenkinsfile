@@ -11,6 +11,8 @@ pipeline {
             steps {
                 echo 'Testing..'
                 sh 'git clone https://github.com/KarluvKing/keras-flask-deploy-webapp.git'
+                sh 'rm -r keras-flask-deploy-webapp'
+                sh 'll'
             }
         }
         stage('Deploy') {
