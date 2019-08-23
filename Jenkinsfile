@@ -10,7 +10,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sudo docker ps -a
+                sh 'sudo docker ps -a'
             }
         }
         stage('Deploy') {
