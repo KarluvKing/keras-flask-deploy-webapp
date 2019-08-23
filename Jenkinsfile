@@ -26,6 +26,12 @@ pipeline {
                 sh 'docker run --rm -i hadolint/hadolint hadolint --ignore DL3013 - < /var/lib/jenkins/workspace/keras-flask-deploy-webapp_master/keras-flask-deploy-webapp/Dockerfile'
             }
         }
+        stage('Run docker container') {
+            steps {
+                sh 'docker build -t /var/lib/jenkins/workspace/keras-flask-deploy-webapp_master/keras-flask-deploy-webapp/keras_flask_app .'
+                sh 'docker run -d -p 5000:5000 keras_flask_app'
+            }
+        }
         stage('Test aws connection') {
             steps {
                 sh '/usr/bin/aws s3 ls'
