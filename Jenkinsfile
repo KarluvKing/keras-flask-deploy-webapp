@@ -46,7 +46,7 @@ pipeline {
         stage('Push docker image to DockerHUB') {
             steps {
                 sh 'echo "rui12345" | docker login --username=ruipbranco --password-stdin'
-                sh '''imageid=imageid=$(docker images -a | grep "capstone" | awk '{print $3}')'''
+                sh '''imageid=$(docker images -a | grep "capstone" | awk '{print $3}')'''
                 sh 'docker tag $imageid ruipbranco/capstonenddevops:firstversion'
                 sh 'docker push ruipbranco/capstonenddevops'
             }
