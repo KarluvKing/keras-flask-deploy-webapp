@@ -25,7 +25,7 @@ pipeline {
         stage('Validate docker image') {
             steps {
                 docker {
-                    image 'hadolint'
+                    image 'f50f63c73c84'
                     args '-u root:sudo -v /var/lib/jenkins/workspace/keras-flask-deploy-webapp_master/Dockerfile'
                 }
             }
