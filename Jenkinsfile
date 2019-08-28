@@ -14,6 +14,7 @@ pipeline {
             steps {
                 sh 'git clone https://github.com/KarluvKing/keras-flask-deploy-webapp.git'
                 sh 'ls -l'
+                sh 'pwd'
             }
         }
         stage('Validate python code') {
