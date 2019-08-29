@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-kubectl run capstone --image=ruipbranco/capstonenddevops:firstversion --port=5555
+su -c "kubectl run capstone --image=ruipbranco/capstonenddevops:firstversion --port=5555" ubuntu
