@@ -54,7 +54,7 @@ pipeline {
         stage('Deploy to AWS K8S') {
             steps {
                 sh 'chmod 755 /var/lib/jenkins/workspace/keras-flask-deploy-webapp_master/keras-flask-deploy-webapp/run_k8s.sh'
-                sh '''su -c "/var/lib/jenkins/workspace/keras-flask-deploy-webapp_master/keras-flask-deploy-webapp/run_k8s.sh" ubuntu'''
+                sh '/var/lib/jenkins/workspace/keras-flask-deploy-webapp_master/keras-flask-deploy-webapp/run_k8s.sh'
             }
         }
         stage('Deploy') {
