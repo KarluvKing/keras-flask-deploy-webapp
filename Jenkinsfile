@@ -7,7 +7,7 @@ pipeline {
                 sh '''curl -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.8/2019-08-14/bin/linux/amd64/kubectl'''
                 sh '''chmod +x ./kubectl'''
                 sh '''mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH'''
-                sh ''''echo export PATH=$HOME/bin:$PATH' >> ~/.bashrc'''
+                /* sh ''''echo export PATH=$HOME/bin:$PATH' >> ~/.bashrc''' */
                 sh '''kubectl version --short --client'''
                 sh '''aws --version'''
                 sh '''aws eks --region us-west-2 update-kubeconfig --name prod'''
