@@ -34,7 +34,6 @@ pipeline {
 				sh 'echo "rui12345" | docker login --username=ruipbranco --password-stdin'
 				sh 'docker tag $(docker images -a | grep "capstone" | awk \'{print $3}\') ruipbranco/capstonenddevops:firstversion'
 				sh 'docker push ruipbranco/capstonenddevops'
-				sh 'docker images -a | grep "capstone" | awk "{print $3}" | xargs docker rmi --force'
 			}
 		}
 		stage('Deploy to AWS K8S') {
