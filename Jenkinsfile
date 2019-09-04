@@ -9,10 +9,12 @@ pipeline {
         echo 'done'
       }
     }
+    node {
     stage('Test kubectl') {
       withKubeConfig([credentialsId: 'user1', serverUrl: '']) {
         sh 'kubectl cluster-info'}
     }
+	}
     stage('Clone repository') {
       steps {
         sh 'git clone https://github.com/KarluvKing/keras-flask-deploy-webapp.git'
