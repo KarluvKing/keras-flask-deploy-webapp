@@ -25,13 +25,9 @@ pipeline {
 			steps {
 				sh 'docker build -t capstone /var/lib/jenkins/workspace/keras-flask-deploy-webapp_master/keras-flask-deploy-webapp/.'
 				sh 'docker run -d -p 5555:5555 capstone'
-			}	
-		}
-		stage('Test if container is running on port 5555') {
-			steps {
 				sh 'curl -Is http://localhost:8080 | head -1'
 				sh 'docker stop $(docker ps -a -q)'
-			}
+			}	
 		}
 		stage('Push docker image to DockerHUB') {
 			steps {
