@@ -38,7 +38,7 @@ pipeline {
 		}
 		stage('Deploy to AWS K8S') {
 			steps {
-				sh '/var/lib/jenkins/kubectl run --image=capstone capstone-app --port=5555 --env=ridiculous-gopher-1567626994'
+				sh '/var/lib/jenkins/kubectl run --image=ruipbranco/capstonenddevops capstone-app --port=5555'
 				sh '/var/lib/jenkins/kubectl expose deployment capstone-app --port=5555 --name=capstone-http' 
 			}
 		}
