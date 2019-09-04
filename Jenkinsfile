@@ -38,7 +38,7 @@ pipeline {
 		}
 		stage('Deploy to AWS K8S') {
 			steps {
-				sh './kubectl cluster-info dump'
+				sh '/var/lib/jenkins/kubectl cluster-info dump'
 			}
 		}
     }
