@@ -1,11 +1,5 @@
 pipeline {
   agent any
-	node {
-    stage('Test kubectl') {
-      withKubeConfig([credentialsId: 'user1', serverUrl: '']) {
-        sh 'kubectl cluster-info'}
-    }
-	}
   stages {
     stage('Clean directory') {
       steps {
@@ -14,6 +8,12 @@ pipeline {
         sh 'rm -r *'
         echo 'done'
       }
+    }
+	  stage('Test kubectl') {
+		  steps{
+      withKubeConfig([credentialsId: 'user1', serverUrl: '']) {
+        sh 'kubectl cluster-info'}
+		  }
     }
     
     stage('Clone repository') {
