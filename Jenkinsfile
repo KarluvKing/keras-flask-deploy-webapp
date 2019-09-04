@@ -10,10 +10,8 @@ pipeline {
       }
     }
     stage('Test kubectl') {
-      agent any
-      steps {
-        sh 'kubectl cluster-info'
-      }
+      withKubeConfig([credentialsId: 'user1', serverUrl: '']) {
+        sh 'kubectl cluster-info'}
     }
     stage('Clone repository') {
       steps {
