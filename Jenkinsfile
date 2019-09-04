@@ -25,7 +25,7 @@ pipeline {
 			steps {
 				sh 'docker build -t capstone /var/lib/jenkins/workspace/keras-flask-deploy-webapp_master/keras-flask-deploy-webapp/.'
 				sh 'docker run -d -p 5555:5555 capstone'
-				sh 'curl -Is http://localhost:8080 | head -1'
+				sh 'curl -Is http://localhost:5555 | head -1'
 				sh 'docker stop $(docker ps -a -q)'
 			}	
 		}
@@ -39,7 +39,8 @@ pipeline {
 		}
 		stage('Deploy to AWS K8S') {
 			steps {
-				sh '/var/lib/jenkins/kubectl cluster-info dump'
+				sh '/var/lib/jenkins/kubectl run --image=capstone capstone-app --port=5555 --env=ridiculous-gopher-1567626994'
+				sh '/var/lib/jenkins/kubectl expose deployment capstone-app --port=5555 --name=capstone-http' 
 			}
 		}
     }
