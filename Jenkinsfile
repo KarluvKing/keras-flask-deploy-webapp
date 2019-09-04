@@ -11,7 +11,7 @@ pipeline {
 		}
 		stage('Test kubectl') {
 			steps {
-				sh '/var/lib/jenkins/kubectl cluster-info dump'
+				sh '/var/lib/jenkins/kubectl --version'
 			}
 		}
 	}
