@@ -43,7 +43,7 @@ pipeline {
 		stage('Deploy to AWS K8S') {
 			steps {
 				sh './kubectl cluster-info dump'
+			}
 		}
     }
 }
-
